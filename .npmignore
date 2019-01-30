@@ -1,3 +1,6 @@
 *.ts
 !*.d.ts
-tsconfig.json
+tsconfig*.json
+
+/test-dist
+/spec
