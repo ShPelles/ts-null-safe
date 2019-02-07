@@ -1,6 +1,6 @@
 import { NullSafe } from "../index";
 
-describe('get', () => {
+describe('get()', () => {
     describe('should works with 1 to 5 keys', () => {
         it('one key', () => {
             const obj = { a: 42 };
@@ -29,15 +29,22 @@ describe('get', () => {
         });
     });
 
-    describe('work eith arrays', () => {
-        it('should works well with chained arrays', () => {
+    describe('should works with arrays', () => {
+        it('with chained arrays', () => {
             const obj = [[[[[7]]]]];
             const actual1 = NullSafe.get(obj, 0, 0, 0, 0, 0);
             const actual2 = NullSafe.get(obj, 1, 2, 3, 4, 5);
             expect(actual1).toBe(7);
             expect(actual2).toBe(undefined);
         });
-        it('should works with arrays inside objects and vice versa', () => {
+
+        it('when array not exists', () => {
+            const obj = [] as number[][][][][];
+            const actual = NullSafe.get(obj, 0, 0, 0, 0, 0);
+            expect(actual).toBe(undefined);
+        });
+
+        it('arrays inside objects and vice versa', () => {
             const obj1 = [{ a: [1] }];
             const obj2 = { a: [{ b: 2 }] };
             const actual1 = NullSafe.get(obj1, 0, 'a', 0);
