@@ -14,9 +14,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "tsc -p ./tsconfig.test.json && jasmine",
-    "build": "tsc",
-    "prepublishOnly": "tsc -p ./ --outDir dist/"
+    "test": "npm run build && jasmine",
+    "build": "tsc -p ./ --outDir dist/",
+    "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "devDependencies": {
